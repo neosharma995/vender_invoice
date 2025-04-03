@@ -309,106 +309,40 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'search',
-        // ],
-        // [
-        //     'text' => 'blog',
-        //     'url' => 'admin/blog',
-        //     'can' => 'manage-blog',
-        // ],
-        // [
-        //     'text' => 'pages',
-        //     'url' => 'admin/pages',
-        //     'icon' => 'far fa-fw fa-file',
-        //     'label' => 4,
-        //     'label_color' => 'success',
-        // ],
+       
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url' => 'profile',
             'icon' => 'fas fa-fw fa-user',
-        ],
-
+        ],       
         [
-            'text' => 'Invoices',
-            'icon' => 'fas fa-file-invoice',
-            'submenu' => [
-                [
-                    'text' => 'Invoices List',
-                    'url' => 'invoices',
-                ],                               
-            ],
+            'text' => 'Vendors',
+            'icon' => 'fas fa-cogs',
+            'url' => 'vendors',          
+        ], 
+        [
+            'text' => 'Quotations',
+            'icon' => 'fas fa-file-invoice',  // Font Awesome icon for Vendors
+            'url' => 'quotations',          
+        ],   
+        [
+            'text' => 'Items',            
+            'icon' => 'fas fa-box', 
+            'url' => 'items',          
+        ],    
+        [
+            'text' => 'Customers',            
+            'icon' => 'fas fa-users',
+            'url' => 'customers',          
         ],
+        
         [
             'text' => 'Users',
             'url'  => 'users',
             'icon' => 'fas fa-users',            
-        ],
-        
-        // [
-        //     'text' => 'change_password',
-        //     'url' => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        // ],
-        // [
-        //     'text' => 'multilevel',
-        //     'icon' => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url' => '#',
-        //                 ],
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url' => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url' => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url' => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url' => '#',
-        //         ],
-        //     ],
-        // ],
-        // ['header' => 'labels'],
-        // [
-        //     'text' => 'important',
-        //     'icon_color' => 'red',
-        //     'url' => '#',
-        // ],
-        // [
-        //     'text' => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url' => '#',
-        // ],
-        // [
-        //     'text' => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url' => '#',
-        // ],
+        ],       
+       
     ],
 
     /*

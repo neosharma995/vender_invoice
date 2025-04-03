@@ -4,9 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use Illuminate\Http\Request;
-
+use TCPDF;
 class InvoiceController extends Controller
 {
+
+    public function generatePdf($id)
+{
+    $invoice = Invoice::findOrFail($id);
+    $pdf = new TCPDF();
+    $pdf->SetAutoPageBreak(false, 0);
+    $pdf->AddPage();
+
+    // Set Background Image (Template)
+    $templatePath = public_path('template/' . $invoice->template);
+    $pdf->Image($templatePath, 0, 0, 210, 297, 'JPG');
+
+    // Set Font
+    $pdf->SetFont('helvetica', '', 12);
+
+    // Add Invoice Data
+    $pdf->SetXY(50, 100);
+    $pdf->Cell(100, 10, "Invoice Number: " . $invoice->invoice_number, 0, 1, 'L');
+
+    $pdf->SetXY(50, 110);
+    $pdf->Cell(100, 10, "Due Date: " . $invoice->due_date, 0, 1, 'L');
+
+    $pdf->SetXY(50, 120);
+    $pdf->Cell(100, 10, "Total: ₹" . $invoice->total_amount, 0, 1, 'L');
+
+    // Output PDF
+    $pdf->Output('invoice.pdf', 'I');
+}
     public function index(Request $request)
     {
         $query = Invoice::query();
@@ -36,14 +64,16 @@ class InvoiceController extends Controller
         $request->validate([
             'total_amount' => 'required|numeric',
             'due_date' => 'nullable|date',
+            'template' => 'required|string', // Ensure template is provided
         ]);
 
         Invoice::create([
             'invoice_number' => 'INV-' . time(),
             'user_id' => auth()->id(),
             'total_amount' => $request->total_amount,
-            'due_date' => $request->due_date,
             'status' => 'pending',
+            'due_date' => $request->due_date,
+            'template' => $request->template,            
         ]);
 
         return redirect()->route('invoices.index')->with('success', 'Invoice created successfully.');
@@ -65,6 +95,7 @@ class InvoiceController extends Controller
             'total_amount' => 'required|numeric',
             'due_date' => 'nullable|date',
             'status' => 'required|in:pending,paid,canceled',
+            'template' => 'required|string', // Ensure template is provided
         ]);
 
         $invoice->update($request->all());

@@ -37,6 +37,14 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label>Template</label>                   
+                    <select name="template" class="form-control">
+                        <option {{ $invoice->status == 'template1.jpg' ? 'selected' : '' }} value="template1.jpg">Template 1</option>
+                        <option {{ $invoice->status == 'template2.jpg' ? 'selected' : '' }} value="template2.jpg">Template 2</option>
+                    </select>
+                </div>   
+
                 <button type="submit" class="btn btn-success">Update Invoice</button>
                 <a href="{{ route('invoices.index') }}" class="btn btn-secondary">Cancel</a>
             </form>

@@ -19,6 +19,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Sr</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Actions</th>
@@ -27,6 +28,7 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
@@ -40,4 +42,8 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-center">
+        {{ $users->links() }}
+    </div>
 @stop

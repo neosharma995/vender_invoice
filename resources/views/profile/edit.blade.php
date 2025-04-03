@@ -30,14 +30,14 @@
             </div>
 
             <!-- Delete Account -->
-            <div class="card mt-3">
+            <!--div class="card mt-3">
                 <div class="card-header bg-danger">
                     <h3 class="card-title text-white">Delete Account</h3>
                 </div>
                 <div class="card-body">
                     @include('profile.partials.delete-user-form')
                 </div>
-            </div>
+            </!--div-->
         </div>
     </div>
 @stop

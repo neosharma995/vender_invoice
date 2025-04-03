@@ -53,6 +53,11 @@
                         <a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-sm btn-warning">
                             <i class="fas fa-edit"></i> Edit
                         </a>
+                        <a href="{{ route('generatePdf', $invoice->id) }}" target="_blank" class="btn btn-sm btn-warning">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+
+
                         <form action="{{ route('invoices.destroy', $invoice) }}" method="POST" style="display:inline;">
                             @csrf @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this invoice?')">
